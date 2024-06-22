@@ -20,6 +20,10 @@
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                         {{ __('Posts') }}
                     </x-nav-link>
+                    <!-- Blog -->
+                    <x-nav-link :href="route('blog')" :active="request()->routeIs('home')">
+                        {{ __('Blog') }}
+                    </x-nav-link>
                 </div>
             </div>
 
