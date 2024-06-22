@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 
+use Illuminate\Support\Str;
+
 class PostController extends Controller
 {
     /**
@@ -35,7 +37,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validar los datos
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
+        // Crear un nuevo post
+        $post = $request->user()->posts()->create([
+            'title' => $request->title,
+            'body' => $request->body,
+            'slug' => Str::slug($request->title)
+        ]);
+
+        // Redireccionar a la vista de edición del post
+        return redirect()->route('posts.edit', $post);
     }
 
     /**
@@ -60,7 +76,13 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validar los datos
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
+        // Actualizar el post
     }
 
     /**
