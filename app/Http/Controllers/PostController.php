@@ -24,9 +24,10 @@ class PostController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Post $post)
     {
-        //
+        // retornar la vista para crear un nuevo post
+        return view('posts.create', ['post' => $post]);
     }
 
     /**
@@ -48,9 +49,10 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Post $post)
     {
-        //
+        // retornar la vista para editar un post
+        return view('posts.edit', ['post' => $post]);
     }
 
     /**
