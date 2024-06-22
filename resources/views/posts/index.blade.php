@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("Listado de publicaciones") }}
 
-                    <table class="table-auto">
+                    <table class="mb-4">
                         <th class="py-2 px-6">Título</th>
                         <th class="py-2 px-6">Autor</th>
                         <th class="py-2 px-6">Creado</th>
