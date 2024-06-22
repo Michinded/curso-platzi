@@ -28,7 +28,7 @@
                             <td class="py-2 px-6">{{ $post->title }}</td>
                             <td class="py-2 px-6">{{ $post->user->name }}</td>
                             <td class="py-2 px-6">{{ $post->created_at->format('d/m/Y') }}</td>
-                            <td class="py-2 px-6"><a href="{{ route('post', $post->slug)}} " class="block mt-2 text-blue-500 hover:text-blue-700">Ver completo</a></td>
+                            <td class="py-2 px-6"><a href="{{ route('post', $post->slug)}}" target="_blank" class="block mt-2 text-blue-500 hover:text-blue-700">Ver completo</a></td>
                             <td class="py-2 px-6 flex">
                                  <form action="{{route('posts.destroy', $post)}}" method="post">
                                     @csrf
