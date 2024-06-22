@@ -15,7 +15,7 @@ class PageController extends Controller
         return view('home', compact('posts'));
     }
 
-    public function blog()
+    public function blog(Request $request)
     {
 
         /*
@@ -30,8 +30,10 @@ class PageController extends Controller
             orderBy('column', 'asc') //Ordena los registros por la columna indicada
         */
 
+        $search = $request->search;
+
         //Obtenemos los posts de la base de datos
-        $posts = Post::latest()->paginate(15);
+        $posts = Post::where('title', 'LIKE', "%{$search}%")->latest()->paginate(15);
         return view('blog', compact('posts'));
     }
 

@@ -3,6 +3,17 @@
 @section('title', 'Todos los blogs')
 
 @section('content')
+
+    <h1 class="text-2xl font-bold text-gray-800 dark:text-white">Todos los blogs</h1>
+
+    <!-- Buscador de blogs -->
+    <div class="flex justify-center mt-4">
+        <!-- Search bar -->
+        <form action="{{ route('blog') }}" method="GET" class="ml-4">
+            <input type="text" name="search" placeholder="Buscar" value="{{ request('search') }}" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+        </form>
+    </div>
+
     <!-- Lista de blogs en tarjetas -->
     <div class="grid grid-cols-3 gap-4 mt-2">
         @foreach ($posts as $post)
