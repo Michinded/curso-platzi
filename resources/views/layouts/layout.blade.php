@@ -13,8 +13,8 @@
     <header class="bg-gray-800">
         <nav class="flex items-center justify-between px-4 py-3">
             <div class="flex items-center">
-                <a href="#" class="ml-4 text-gray-300 hover:text-white">Inicio</a>
-                <a href="#" class="ml-4 text-gray-300 hover:text-white">Blogs</a>
+                <a href="{{route('home')}}" class="ml-4 text-gray-300 hover:text-white">Inicio</a>
+                <a href="{{route('blog')}}" class="ml-4 text-gray-300 hover:text-white">Blogs</a>
                 <a href="#" class="ml-4 text-gray-300 hover:text-white">About</a>
             </div>
             <div class="flex items-center">
