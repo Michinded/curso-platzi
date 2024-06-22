@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("Listado de publicaciones") }}
 
-                    <table class="mb-4">
+                    <table class="table-auto">
                         <th class="py-2 px-6">Título</th>
                         <th class="py-2 px-6">Autor</th>
                         <th class="py-2 px-6">Creado</th>
@@ -23,7 +23,30 @@
                             <td class="py-2 px-6">{{ $post->user->name }}</td>
                             <td class="py-2 px-6">{{ $post->created_at->format('d/m/Y') }}</td>
                             <td class="py-2 px-6"><a href="{{ route('post', $post->slug)}} " class="block mt-2 text-blue-500 hover:text-blue-700">Ver completo</a></td>
-                            <td class="py-2 px-6"> Editar - Eliminar</td>
+                            <td class="py-2 px-6 flex">
+                                 <form action="{{route('posts.destroy', $post)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button 
+                                    type="submit" 
+                                    class="text-red-500 hover:text-red-700 px-6"
+                                    onclick="return confirm('¿Estás seguro de eliminar este post? Esta acción no se puede deshacer. \nPost: {{$post->title}}')"
+                                    >
+                                    Eliminar
+                                    </button>
+                                 </form>
+                                 <form action="{{route('posts.destroy', $post)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button 
+                                    type="submit" 
+                                    class="text-blue-500 hover:text-red-700 px-6"
+                                    onclick="return confirm('¿Desea editar este post? \nPost: {{$post->title}}')"
+                                    >
+                                    Editar
+                                    </button>
+                                 </form>
+                            </td>
                         </tr>
                         @empty
                             <div class="border-b border-gray-200 text-lg py-6">
