@@ -10,7 +10,13 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("Listado de publicaciones") }}
-
+                    <div class="flex justify-end">
+                        <div class="bg-gray-500 hover:bg-gray-700 text-white rounded">
+                            <a href="{{ route('posts.create') }}" class="font-bold py-4 px-4 rounded">
+                                Crear post
+                            </a>
+                        </div>
+                    </div>
                     <table class="mb-4">
                         <th class="py-2 px-6">Título</th>
                         <th class="py-2 px-6">Autor</th>
@@ -35,17 +41,7 @@
                                     Eliminar
                                     </button>
                                  </form>
-                                 <form action="{{route('posts.destroy', $post)}}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button 
-                                    type="submit" 
-                                    class="text-blue-500 hover:text-red-700 px-6"
-                                    onclick="return confirm('¿Desea editar este post? \nPost: {{$post->title}}')"
-                                    >
-                                    Editar
-                                    </button>
-                                 </form>
+                                <a href="{{ route('posts.edit', $post) }}" class="text-blue-500 hover:text-blue-700 px-6">Editar</a>
                             </td>
                         </tr>
                         @empty
