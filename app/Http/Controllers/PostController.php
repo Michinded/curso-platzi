@@ -43,11 +43,18 @@ class PostController extends Controller
             'body' => 'required'
         ]);
 
+        $slug = Str::slug($request->title);
+
+        // Verificar si el slug ya existe y si es así retornar un error
+        if (Post::where('slug', $slug)->exists()) {
+            return back()->withInput()->withErrors(['title' => 'El título ya ha sido registrado']);
+        }
+
         // Crear un nuevo post
         $post = $request->user()->posts()->create([
             'title' => $request->title,
             'body' => $request->body,
-            'slug' => Str::slug($request->title)
+            'slug' => $slug
         ]);
 
         // Redireccionar a la vista de edición del post
@@ -82,11 +89,18 @@ class PostController extends Controller
             'body' => 'required'
         ]);
 
+        $slug = Str::slug($request->title);
+
+        // Verificar si el slug ya existe y si es así retornar un error (excepto si es el mismo post)
+        if (Post::where('slug', $slug)->where('id', '!=', $post->id)->exists()) {
+            return back()->withInput()->withErrors(['title' => 'El título ya ha sido registrado']);
+        }
+
         // Actualizar el post
         $post->update([
             'title' => $request->title,
             'body' => $request->body,
-            'slug' => Str::slug($request->title)
+            'slug' => $slug
         ]);
 
         // Redireccionar a la vista de edición del post
