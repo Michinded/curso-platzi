@@ -33,7 +33,9 @@ class PageController extends Controller
         $search = $request->search;
 
         //Obtenemos los posts de la base de datos
-        $posts = Post::where('title', 'LIKE', "%{$search}%")->latest()->paginate(15);
+        $posts = Post::where('title', 'LIKE', "%{$search}%")
+            ->with('user')
+            ->latest()->paginate(15);
         return view('blog', compact('posts'));
     }
 
