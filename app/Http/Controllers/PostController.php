@@ -74,7 +74,7 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Post $post)
     {
         // Validar los datos
         $request->validate([
@@ -83,6 +83,14 @@ class PostController extends Controller
         ]);
 
         // Actualizar el post
+        $post->update([
+            'title' => $request->title,
+            'body' => $request->body,
+            'slug' => Str::slug($request->title)
+        ]);
+
+        // Redireccionar a la vista de edición del post
+        return redirect()->route('posts.edit', $post);
     }
 
     /**
