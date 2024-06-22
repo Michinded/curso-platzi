@@ -32,7 +32,9 @@
             </div>
         </nav>
     </header>
-    @yield('content')
+    <div style="background-color: #335788" class="w-max">
+        @yield('content')
+    </div>
     
     @yield('scripts')
 </body>

@@ -3,12 +3,10 @@
 @section('title', 'Todos los blogs')
 
 @section('content')
-    <h1>Blogs</h1>
-    <p>Este es el contenido de la página de blogs.</p>
     <!-- Lista de blogs en tarjetas -->
-    <div class="grid grid-cols-3 gap-4">
+    <div class="grid grid-cols-3 gap-4 mt-2">
         @foreach ($posts as $post)
-            <div class="bg-white p-4 shadow rounded">
+            <div class="bg-white p-4 shadow rounded dark:bg-gray-800 dark:text-white">
                 <h2 class="text-lg font-bold">{{$post->title}}</h2>
                 <!-- autor del post -->
                 <p class="text-sm text-gray-500">Por {{$post->user->name}}</p>
