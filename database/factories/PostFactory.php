@@ -17,6 +17,8 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
+            // user_id disponible en la tabla users (variable id)
+            'user_id' => $this->faker->numberBetween(1, 10),
             // title
             'title' => $title = $this->faker->sentence(),
             // slug

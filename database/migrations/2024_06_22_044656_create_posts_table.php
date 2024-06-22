@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            // Llave foránea
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            // o tambien se puede hacer de esta manera
+            // $table->foreign('user_id')->constrained();
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('body');
