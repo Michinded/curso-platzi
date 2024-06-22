@@ -18,7 +18,16 @@
                 <a href="#" class="ml-4 text-gray-300 hover:text-white">About</a>
             </div>
             <div class="flex items-center">
-                <a href="#" class="text-gray-300 hover:text-white">Login</a>
+                @auth
+                    <a href="{{route('dashboard')}}" class="ml-4 text-gray-300 hover:text-white">Dashboard</a>
+                    <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <button type="submit" class="ml-4 text-gray-300 hover:text-white">Logout</button>
+                    </form>
+                @else
+                    <a href="{{route('login')}}" class="ml-4 text-gray-300 hover:text-white">Login</a>
+                    <a href="{{route('register')}}" class="ml-4 text-gray-300 hover:text-white">Register</a>
+                @endauth
             </div>
         </nav>
     </header>
