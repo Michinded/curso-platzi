@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -11,6 +12,8 @@ Route::controller(PageController::class)->group(function () {
     Route::get('blog',          'blog')->name('blog');
     Route::get('blog/{post:slug}',     'post')->name('post');
 });
+
+Route::resource('posts', PostController::class)->except('show')->middleware(['auth', 'verified']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
