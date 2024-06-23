@@ -7,6 +7,9 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class PostCollection extends ResourceCollection
 {
+    // Usar PostResorce para dar formato a la respuesta
+    public $collects = PostResorce::class;
+
     /**
      * Transform the resource collection into an array.
      *
