@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api\V2;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Resources\V2\PostResorce;
+use App\Http\Resources\V2\PostCollection;
 
 class PostController extends Controller
 {
