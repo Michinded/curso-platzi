@@ -8,10 +8,7 @@ class PageController extends Controller
 {
     public function home()
     {
-        // Retornamos los 10 últimos posts
         $posts = Post::latest()->take(12)->get();
-
-        // Retornamos la vista home y le pasamos los posts
         return view('home', compact('posts'));
     }
 
